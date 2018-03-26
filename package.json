@@ -1,0 +1,19 @@
+{
+  "name": "modal",
+  "version": "0.1.0",
+  "description": "A PureScript Modal",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "pulp browserify -O -t dist/big.js && cp index.html dist/index.html && uglifyjs dist/big.js --compress --output dist/app.js",
+    "server": "pulp server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kyle Corbelli",
+  "license": "MIT",
+  "devDependencies": {
+    "uglify-js": "^3.3.16"
+  }
+}
