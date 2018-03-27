@@ -8,12 +8,14 @@
   },
   "scripts": {
     "build": "pulp browserify -O -t dist/big.js && cp index.html dist/index.html && uglifyjs dist/big.js --compress --output dist/app.js",
+    "deploy": "npm run build && cp dist/index.html dist/200.html && surge --project dist/ --domain wide-eyed-purpose.surge.sh/",
     "server": "pulp server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kyle Corbelli",
   "license": "MIT",
   "devDependencies": {
+    "surge": "^0.20.1",
     "uglify-js": "^3.3.16"
   }
 }

@@ -35,7 +35,7 @@ modal =
 
     render :: State -> ComponentHTML Query
     render state =
-      div [ class_ <<< ClassName $ "flex flex-column helvetica items-center justify-center" ]
+      div [ class_ <<< ClassName $ "flex flex-column helvetica items-center justify-center tc" ]
         [ h1_ [ text state.message ]
         , theModal state.isModalVisible state someArbitraryViewFunction
         , button [ class_ <<< ClassName $ buttonClasses, onClick <<< input_ $ ToggleModal ] [ text "Launch Modal" ]
