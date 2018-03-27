@@ -26,7 +26,7 @@ var PS = {};
   var Control_Monad_Eff = PS["Control.Monad.Eff"];
   var Control_Monad_Eff_Console = PS["Control.Monad.Eff.Console"];
   var Prelude = PS["Prelude"];        
-  var main = Control_Monad_Eff_Console.log("Hello sailor!");
+  var main = Control_Monad_Eff_Console.log("Hello PureScript!");
   exports["main"] = main;
 })(PS["Main"] = PS["Main"] || {});
 PS["Main"].main();
