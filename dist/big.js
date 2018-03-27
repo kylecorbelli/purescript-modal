@@ -8535,14 +8535,16 @@ var PS = {};
   var theModal = function (isVisible) {
       return function (state) {
           return function (viewFunction) {
-              var displayClass = (function () {
-                  if (isVisible) {
-                      return "flex";
-                  };
-                  return "dn";
-              })();
-              var containerClasses = "bottom-0 fixed items-center justify-center left-0 right-0 top-0" + (" " + displayClass);
-              return Halogen_HTML_Elements.div([ Halogen_HTML_Properties.class_(Halogen_HTML_Core.ClassName(containerClasses)) ])([ Halogen_HTML_Elements.div([ Halogen_HTML_Properties.class_(Halogen_HTML_Core.ClassName("bg-white flex items-center justify-center mw7 relative w-90 z-4")) ])([ viewFunction(state) ]), Halogen_HTML_Elements.div([ Halogen_HTML_Properties.class_(Halogen_HTML_Core.ClassName("bg-black bottom-0 fixed left-0 o-80 right-0 top-0 z-1")), Halogen_HTML_Events.onClick(Halogen_HTML_Events.input_(ToggleModal.create)) ])([  ]) ]);
+              return function (onDismiss) {
+                  var displayClass = (function () {
+                      if (isVisible) {
+                          return "flex";
+                      };
+                      return "dn";
+                  })();
+                  var containerClasses = "bottom-0 fixed items-center justify-center left-0 right-0 top-0" + (" " + displayClass);
+                  return Halogen_HTML_Elements.div([ Halogen_HTML_Properties.class_(Halogen_HTML_Core.ClassName(containerClasses)) ])([ Halogen_HTML_Elements.div([ Halogen_HTML_Properties.class_(Halogen_HTML_Core.ClassName("bg-white flex items-center justify-center mw7 relative w-90 z-4")) ])([ viewFunction(state) ]), Halogen_HTML_Elements.div([ Halogen_HTML_Properties.class_(Halogen_HTML_Core.ClassName("bg-black bottom-0 fixed left-0 o-80 right-0 top-0 z-1")), Halogen_HTML_Events.onClick(Halogen_HTML_Events.input_(onDismiss)) ])([  ]) ]);
+              };
           };
       };
   };
@@ -8552,7 +8554,7 @@ var PS = {};
   };
   var modal = (function () {
       var render = function (state) {
-          return Halogen_HTML_Elements.div([ Halogen_HTML_Properties.class_(Halogen_HTML_Core.ClassName("flex flex-column helvetica items-center justify-center tc")) ])([ Halogen_HTML_Elements.h1_([ Halogen_HTML_Core.text(state.message) ]), theModal(state.isModalVisible)(state)(someArbitraryViewFunction), Halogen_HTML_Elements.button([ Halogen_HTML_Properties.class_(Halogen_HTML_Core.ClassName(buttonClasses)), Halogen_HTML_Events.onClick(Halogen_HTML_Events.input_(ToggleModal.create)) ])([ Halogen_HTML_Core.text("Launch Modal") ]) ]);
+          return Halogen_HTML_Elements.div([ Halogen_HTML_Properties.class_(Halogen_HTML_Core.ClassName("flex flex-column helvetica items-center justify-center tc")) ])([ Halogen_HTML_Elements.h1_([ Halogen_HTML_Core.text(state.message) ]), theModal(state.isModalVisible)(state)(someArbitraryViewFunction)(ToggleModal.create), Halogen_HTML_Elements.button([ Halogen_HTML_Properties.class_(Halogen_HTML_Core.ClassName(buttonClasses)), Halogen_HTML_Events.onClick(Halogen_HTML_Events.input_(ToggleModal.create)) ])([ Halogen_HTML_Core.text("Launch Modal") ]) ]);
       };
       var initialState = {
           message: "PureScript Modal",
